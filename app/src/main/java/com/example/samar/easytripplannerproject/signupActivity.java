@@ -80,7 +80,9 @@ public class signupActivity extends AppCompatActivity {
                             //user register --> login activity
                             Toast.makeText(signupActivity.this,"register successfully",Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
+
                             startActivity(intentToLogin);
+                            finish();
 
                         }
                         else{

@@ -1,6 +1,8 @@
 package com.example.samar.easytripplannerproject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,7 +25,8 @@ public class loginActivity extends AppCompatActivity {
     private EditText password;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-
+    private Intent intentToHome;
+    public static final String shP ="login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,8 @@ public class loginActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
+
+        intentToHome = new Intent(loginActivity.this,homeActivity.class);
 
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -68,9 +73,19 @@ public class loginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
-                            //user register --> login activity
+
                             Toast.makeText(loginActivity.this,"login successfully",Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
+                            //save login in shared preference
+
+                            SharedPreferences setting = getSharedPreferences(shP,0);
+                            SharedPreferences.Editor  edit=  setting.edit();
+                            edit.putString("flag","true");
+                            edit.commit();
+
+
+                            startActivity(intentToHome);
+                            finish();
                         }
                         else{
                             Toast.makeText(loginActivity.this," couldn't login, pls. try again...",Toast.LENGTH_SHORT).show();
