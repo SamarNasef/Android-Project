@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //fb v = 12.0.1
+
                 signupIntent = new Intent(MainActivity.this,signupActivity.class);
                 startActivity(signupIntent);
 

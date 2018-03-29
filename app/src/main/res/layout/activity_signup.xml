@@ -19,7 +19,7 @@
         android:text="@string/nameStr" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/nameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -37,17 +37,17 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView"
         android:layout_alignStart="@+id/textView"
-        android:layout_below="@+id/editText5"
+        android:layout_below="@+id/nameTxt"
         android:layout_marginTop="52dp"
         android:text="@string/emailStr" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/emailTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText5"
-        android:layout_alignRight="@+id/editText5"
-        android:layout_below="@+id/editText5"
+        android:layout_alignEnd="@+id/nameTxt"
+        android:layout_alignRight="@+id/nameTxt"
+        android:layout_below="@+id/nameTxt"
         android:layout_marginTop="37dp"
         android:ems="10"
         android:inputType="textEmailAddress" />
@@ -58,28 +58,28 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/editText7"
+        android:layout_below="@+id/emailTxt"
         android:layout_marginTop="42dp"
         android:text="@string/passwordStr" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/passTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText7"
-        android:layout_alignStart="@+id/editText7"
-        android:layout_below="@+id/editText7"
+        android:layout_alignLeft="@+id/emailTxt"
+        android:layout_alignStart="@+id/emailTxt"
+        android:layout_below="@+id/emailTxt"
         android:layout_marginTop="27dp"
         android:ems="10"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signupBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText8"
-        android:layout_alignStart="@+id/editText8"
-        android:layout_below="@+id/editText8"
+        android:layout_alignLeft="@+id/passTxt"
+        android:layout_alignStart="@+id/passTxt"
+        android:layout_below="@+id/passTxt"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="56dp"
