@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
 
 public class signupActivity extends AppCompatActivity {
 
@@ -43,10 +46,21 @@ public class signupActivity extends AppCompatActivity {
                 String userEmail =  email.getText().toString();
                 String userPass =  password.getText().toString();
 
-                if(TextUtils.isEmpty(userEmail)){
-                    //name is empty
-                    Toast.makeText(signupActivity.this,"Please enter email",Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(userEmail) ){
+
+                    //email is empty
+                    Toast.makeText(signupActivity.this,"Please enter your e-mail",Toast.LENGTH_SHORT).show();
                     return;
+                }
+                if(! Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
+                    Toast.makeText(signupActivity.this,"Please enter valid e-mail",Toast.LENGTH_SHORT).show();
+                    return;
+
+                }
+                if(TextUtils.isEmpty(userPass)){
+                    Toast.makeText(signupActivity.this,"Please enter your password",Toast.LENGTH_SHORT).show();
+                    return;
+
                 }
 
                 //validation is ok

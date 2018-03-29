@@ -46,8 +46,14 @@ public class loginActivity extends AppCompatActivity {
                 String userPass =  password.getText().toString();
 
                 if(TextUtils.isEmpty(userEmail)){
-                    //name is empty
-                    Toast.makeText(loginActivity.this,"Please enter email",Toast.LENGTH_SHORT).show();
+                    //email is empty
+                    Toast.makeText(loginActivity.this,"Please enter your e-mail",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(TextUtils.isEmpty(userPass)){
+                    //email is empty
+                    Toast.makeText(loginActivity.this,"Please enter your password",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
