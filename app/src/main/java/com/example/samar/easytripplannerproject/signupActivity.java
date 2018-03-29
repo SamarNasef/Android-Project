@@ -1,6 +1,7 @@
 package com.example.samar.easytripplannerproject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class signupActivity extends AppCompatActivity {
     private EditText password;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    private Intent intentToLogin ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class signupActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
+        intentToLogin = new Intent(signupActivity.this,loginActivity.class);
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +80,8 @@ public class signupActivity extends AppCompatActivity {
                             //user register --> login activity
                             Toast.makeText(signupActivity.this,"register successfully",Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
+                            startActivity(intentToLogin);
+
                         }
                         else{
                             Toast.makeText(signupActivity.this," couldn't register, pls. try again...",Toast.LENGTH_SHORT).show();
