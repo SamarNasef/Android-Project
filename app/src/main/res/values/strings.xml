@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EasyTripPlannerProject</string>
+    <string name="loginStr">Log in</string>
+    <string name="signupStr">Sign up</string>
+</resources>
