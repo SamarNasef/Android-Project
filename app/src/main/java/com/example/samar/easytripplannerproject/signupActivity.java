@@ -19,7 +19,6 @@ public class signupActivity extends AppCompatActivity {
 
     private Button signupBtn;
     private EditText email;
-    private EditText name;
     private EditText password;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
@@ -29,7 +28,6 @@ public class signupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        name = findViewById(R.id.nameTxt);
         email = findViewById(R.id.loginemailTxt);
         password = findViewById(R.id.loginpassTxt);
         signupBtn = findViewById(R.id.signupBtn);
@@ -42,13 +40,12 @@ public class signupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String userName =  name.getText().toString();//.trim()
                 String userEmail =  email.getText().toString();
                 String userPass =  password.getText().toString();
 
-                if(TextUtils.isEmpty(userName)){
+                if(TextUtils.isEmpty(userEmail)){
                     //name is empty
-                    Toast.makeText(signupActivity.this,"Please enter name",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(signupActivity.this,"Please enter email",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
