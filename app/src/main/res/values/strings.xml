@@ -2,4 +2,7 @@
     <string name="app_name">EasyTripPlannerProject</string>
     <string name="loginStr">Log in</string>
     <string name="signupStr">Sign up</string>
+    <string name="nameStr">Name</string>
+    <string name="emailStr">E-mail</string>
+    <string name="passwordStr">Password</string>
 </resources>
