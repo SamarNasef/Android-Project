@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,8 +30,8 @@ public class signupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         name = findViewById(R.id.nameTxt);
-        email = findViewById(R.id.emailTxt);
-        password = findViewById(R.id.passTxt);
+        email = findViewById(R.id.loginemailTxt);
+        password = findViewById(R.id.loginpassTxt);
         signupBtn = findViewById(R.id.signupBtn);
 
         progressDialog = new ProgressDialog(this);
