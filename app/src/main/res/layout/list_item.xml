@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/decTxt"
+                android:id="@+id/descTxt"
                 android:text="desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
