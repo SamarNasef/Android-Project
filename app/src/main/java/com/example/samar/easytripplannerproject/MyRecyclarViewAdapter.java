@@ -39,7 +39,7 @@ public class MyRecyclarViewAdapter extends RecyclerView.Adapter<MyRecyclarViewAd
        ListItem listItem =  listItems.get(position);
        holder.itemTextview.setText(listItem.getItem());
        holder.descTextview.setText(listItem.getDesc());
-       
+
 
     }
 
