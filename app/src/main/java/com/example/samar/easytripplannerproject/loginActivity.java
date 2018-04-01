@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class loginActivity extends AppCompatActivity {
 
@@ -26,6 +27,9 @@ public class loginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
     private Intent intentToHome;
+    //
+    private FirebaseUser user;
+    //
     public static final String shP ="login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +77,9 @@ public class loginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
-
+                            //unique id
+                            user =  firebaseAuth.getCurrentUser();
+                            //
                             Toast.makeText(loginActivity.this,"login successfully",Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                             //save login in shared preference
@@ -82,9 +88,13 @@ public class loginActivity extends AppCompatActivity {
                             SharedPreferences.Editor  edit=  setting.edit();
                             edit.putString("flag","true");
                             edit.commit();
+                            if (user != null) {
+                                //Toast.makeText(loginActivity.this, user.getEmail(), Toast.LENGTH_SHORT).show();
+                                intentToHome.putExtra("userId",user.getEmail());
 
-
+                            }
                             startActivity(intentToHome);
+
                             finish();
                         }
                         else{
