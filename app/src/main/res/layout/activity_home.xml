@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.samar.easytripplannerproject.homeActivity">
-    
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/tripView"
         android:layout_width="match_parent"
@@ -14,5 +15,10 @@
 
 
     </android.support.v7.widget.RecyclerView>
+    <Button
+        android:id="@+id/addtripBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add trip" />
 
 </RelativeLayout>

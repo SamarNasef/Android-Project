@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.example.samar.easytripplannerproject.Main2Activity">
+
+
+<fragment
+    android:id="@+id/place_autocomplete_fragment"
+    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+    android:layout_width="250dp"
+
+    android:layout_height="32dp"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="105dp" />
+
+
+<fragment
+    android:id="@+id/place_autocomplete_fragment1"
+    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+    android:layout_width="250dp"
+
+    android:layout_height="32dp"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_below="@+id/textView"
+    android:layout_marginTop="30dp" />
+
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/place_autocomplete_fragment"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginLeft="16dp"
+    android:layout_marginStart="16dp"
+    android:text="Start Point" />
+
+<TextView
+    android:id="@+id/textView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/place_autocomplete_fragment1"
+    android:layout_alignLeft="@+id/textView"
+    android:layout_alignStart="@+id/textView"
+    android:text="End Point" />
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView"
+    android:layout_alignParentTop="true"
+    android:layout_alignStart="@+id/textView"
+    android:layout_marginTop="42dp"
+    android:text="Trip Name" />
+
+<EditText
+    android:id="@+id/tripName"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/place_autocomplete_fragment"
+    android:layout_alignParentTop="true"
+    android:layout_alignStart="@+id/place_autocomplete_fragment"
+    android:layout_marginTop="28dp"
+    android:ems="10"
+    android:hint="Please Enter your trip Name !"
+    android:inputType="textPersonName" />
+
+<TextView
+    android:id="@+id/textView4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView2"
+    android:layout_alignStart="@+id/textView2"
+    android:layout_centerVertical="true"
+    android:text="Date/Time" />
+
+
+<EditText
+    android:id="@+id/tripDateAndTime"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/textView4"
+    android:layout_alignLeft="@+id/place_autocomplete_fragment1"
+    android:layout_alignStart="@+id/place_autocomplete_fragment1"
+    android:ems="10"
+    android:hint="Enter Trip Date / Time "
+    android:focusable="false"
+    android:inputType="textPersonName" />
+
+
+
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignEnd="@+id/textView"
+    android:layout_alignRight="@+id/textView"
+    android:layout_below="@+id/textView4"
+    android:layout_marginTop="47dp"
+    android:text="Add Notes" />
+
+<EditText
+    android:id="@+id/addNote"
+    android:layout_width="235dp"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView1"
+    android:layout_alignBottom="@+id/textView1"
+    android:layout_alignEnd="@+id/tripDateAndTime"
+    android:layout_alignRight="@+id/tripDateAndTime"
+    android:ems="10"
+    android:hint="Add Notes as you like !"
+    android:inputType="textMultiLine" />
+
+<Button
+    android:id="@+id/save"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/addNote"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="49dp"
+    android:text="Save" />
+
+
+
+
+</RelativeLayout>
+
