@@ -5,4 +5,6 @@
     <string name="nameStr">Name</string>
     <string name="emailStr">E-mail</string>
     <string name="passwordStr">Password</string>
+    <string name="starttrip_str">Start Trip</string>
+    <string name="Edit_trip_str">Edit Trip</string>
 </resources>

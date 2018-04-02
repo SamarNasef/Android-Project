@@ -2,24 +2,7 @@ package com.example.samar.easytripplannerproject;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.google.android.gms.common.api.Status;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-
-import android.app.DatePickerDialog;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,14 +22,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class Main2Activity extends AppCompatActivity {
-
-
+public class AddingTripActivity extends AppCompatActivity {
 
     EditText select_date;
     private  int mYear;
     private  int mMonth;
     private  int mDay;
+    private int mHour;
+    private int mMinute;
 
     DatabaseReference rootRef;
 
@@ -54,39 +37,51 @@ public class Main2Activity extends AppCompatActivity {
     DatabaseReference demoRef1;
     DatabaseReference demoRef2;
     Button save;
-    EditText trip_name;
-    EditText add_notes;
-    EditText trip_date;
+    EditText tripName;
+    EditText tripNote;
+    EditText tripDate;
     Intent comingIntent;
 
-    EditText start_point;
-    EditText end_point;
+    EditText tripTo;
+    EditText tripFrom;
     int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
     PlaceAutocompleteFragment autocompleteFragment;
     PlaceAutocompleteFragment autocompleteFragment1;
-
-    // private FirebaseDatabase mRef;
-
+    String email;
+    public static final String shP ="login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_adding_trip);
+
         comingIntent=getIntent();
 
         save=findViewById(R.id.save);
-        add_notes=findViewById(R.id.addNote);
-        trip_date=findViewById(R.id.tripDateAndTime);
-        trip_name=findViewById(R.id.tripName);
+        tripNote=findViewById(R.id.addNote);
+        tripDate=findViewById(R.id.tripDateAndTime);
+        tripName=findViewById(R.id.tripName);
+
 
         select_date=findViewById(R.id.tripDateAndTime);
+
+         email=comingIntent.getStringExtra("userEmail");
+if(email == null){
+
+    SharedPreferences setting = getSharedPreferences(shP,0);
+    email = setting.getString("email","0");
+
+
+
+}
+        email = email.split("@")[0];
 
 
 
 
         //date and time
-        select_date.setOnClickListener(new View.OnClickListener() {
+            select_date.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -95,8 +90,11 @@ public class Main2Activity extends AppCompatActivity {
                 mYear = mcurrentDate.get(Calendar.YEAR);
                 mMonth = mcurrentDate.get(Calendar.MONTH);
                 mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+                mHour=mcurrentDate.get(Calendar.HOUR);
+                mMinute=mcurrentDate.get(Calendar.MINUTE);
 
-                final DatePickerDialog mDatePicker = new DatePickerDialog(Main2Activity.this, new DatePickerDialog.OnDateSetListener() {
+
+                final DatePickerDialog mDatePicker = new DatePickerDialog(AddingTripActivity.this, new DatePickerDialog.OnDateSetListener() {
 
 
                     public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
@@ -104,6 +102,7 @@ public class Main2Activity extends AppCompatActivity {
                         myCalendar.set(Calendar.YEAR, selectedyear);
                         myCalendar.set(Calendar.MONTH, selectedmonth);
                         myCalendar.set(Calendar.DAY_OF_MONTH, selectedday);
+
                         String myFormat = "dd/MM/yy";
                         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
 
@@ -121,7 +120,7 @@ public class Main2Activity extends AppCompatActivity {
         });
 
 
-// autocomplete start point
+        // autocomplete start point
 
         autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
@@ -169,13 +168,14 @@ public class Main2Activity extends AppCompatActivity {
         });
 
 
+
         //save data in firebase
 
-       // rootRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://androidproject1-58342.firebaseio.com/trips");
+        // rootRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://androidproject1-58342.firebaseio.com/trips");
         rootRef = FirebaseDatabase.getInstance().getReference();
         //database reference pointing to demo node
 
-        demoRef = rootRef.child("trip");
+        demoRef = rootRef.child(email);
 //        demoRef = rootRef.child("name");
 //       demoRef1 = rootRef.child("date");
 
@@ -185,27 +185,21 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-
-                String name = trip_name.getText().toString();
-                String date = trip_date.getText().toString();
-                String note = add_notes.getText().toString();
-                String email=comingIntent.getStringExtra("userEmail");
+                String name = tripName.getText().toString();
+                String date = tripDate.getText().toString();
+                String note = tripNote.getText().toString();
 
 
+                tripFrom = (EditText)autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input);
 
 
-                start_point = (EditText)autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input);
+                String startpoint=tripFrom.getText().toString();
 
 
-                String startpoint=start_point.getText().toString();
+                tripTo = (EditText)autocompleteFragment1.getView().findViewById(R.id.place_autocomplete_search_input);
 
 
-
-
-                end_point = (EditText)autocompleteFragment1.getView().findViewById(R.id.place_autocomplete_search_input);
-
-
-                String endpoint=end_point.getText().toString();
+                String endpoint=tripTo.getText().toString();
 
                 // String userId="";
 
@@ -221,14 +215,14 @@ public class Main2Activity extends AppCompatActivity {
 //                demoRef1.push().setValue(date);
 //                demoRef2.push().setValue(note);
 
-                Toast.makeText(Main2Activity.this, "Done!",
+                Toast.makeText(AddingTripActivity.this, "Done!",
                         Toast.LENGTH_LONG).show();
 
-                trip_name.setText("");
-                trip_date.setText("");
-                add_notes.setText("");
-                start_point.setText("");
-                end_point.setText("");
+                tripName.setText("");
+                tripDate.setText("");
+                tripNote.setText("");
+                tripFrom.setText("");
+                tripTo.setText("");
 
 
 
@@ -246,7 +240,22 @@ public class Main2Activity extends AppCompatActivity {
         });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-
 }
-

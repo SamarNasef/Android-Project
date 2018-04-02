@@ -87,12 +87,18 @@ public class loginActivity extends AppCompatActivity {
                             SharedPreferences setting = getSharedPreferences(shP,0);
                             SharedPreferences.Editor  edit=  setting.edit();
                             edit.putString("flag","true");
+                            if ( user.getEmail()!= null) {
+                                edit.putString("email", user.getEmail());
+
+                            }
                             edit.commit();
-                            if (user != null) {
-                                //Toast.makeText(loginActivity.this, user.getEmail(), Toast.LENGTH_SHORT).show();
+                            if (user.getEmail() != null) {
+                                Toast.makeText(loginActivity.this, user.getEmail(), Toast.LENGTH_SHORT).show();
                                 intentToHome.putExtra("userId",user.getEmail());
 
                             }
+
+
                             startActivity(intentToHome);
 
                             finish();

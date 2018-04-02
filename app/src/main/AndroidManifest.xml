@@ -18,10 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD_x6VToBdaBNeDHWWb9pS0V_H_JBywsNo" />
+
         <activity android:name=".loginActivity" />
         <activity android:name=".signupActivity" />
         <activity android:name=".homeActivity" />
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".ShowTripActivity" />
+        <activity android:name=".AddingTripActivity"></activity>
     </application>
 
 </manifest>

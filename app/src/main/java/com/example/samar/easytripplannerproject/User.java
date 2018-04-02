@@ -7,24 +7,24 @@ package com.example.samar.easytripplannerproject;
 public class User {
 
 
-        public String trip_name;
-        public String trip_date;
-        public String trip_note;
-        public String start_point;
-        public String end_point;
+        public String tripName;
+        public String tripDate;
+        public String tripNote;
+        public String tripFrom;
+        public String tripTo;
        public String  userId;
 
         public User() {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
 
-        public User(String userId, String trip_name, String trip_date, String trip_note, String start_point, String end_point) {
+        public User(String userId, String tripName, String tripDate, String tripNote, String tripFrom, String tripTo) {
             this.userId=userId;
-            this.trip_name = trip_name;
-            this.trip_date= trip_date;
-            this.trip_note= trip_note;
-            this.start_point=start_point;
-            this.end_point=end_point;
+            this.tripName = tripName;
+            this.tripDate= tripDate;
+            this.tripNote= tripNote;
+            this.tripFrom=tripFrom;
+            this.tripTo=tripTo;
 
         }
 

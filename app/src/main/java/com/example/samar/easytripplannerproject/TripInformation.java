@@ -12,6 +12,10 @@ public class TripInformation {
     private String tripNote;
     private String tripType;
 
+    public  TripInformation(){
+
+    }
+
     public TripInformation(String tripName, String tripDate, String tripTo, String tripFrom, String tripNote, String tripType) {
         this.tripName = tripName;
         this.tripDate = tripDate;
